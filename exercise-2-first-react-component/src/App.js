@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import Header from "./components/Header";
+import List from "./components/List";
+import ListItem from "./components/ListItem";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <List>
+        <ListItem dark={true} color="red">
+          Happy
+        </ListItem>
+        <ListItem color="green">Hello world!!!</ListItem>
+        <ListItem dark={true} color="blue">
+          Santa
+        </ListItem>
+        <ListItem color="#111111">React</ListItem>
+        <ListItem color="cyan">JavaScript</ListItem>
+      </List>
     </div>
   );
 }
