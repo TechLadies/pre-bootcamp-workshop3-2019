@@ -1,14 +1,17 @@
 import React from "react";
+import ThemeContext from "./ThemeContext";
 
 function ListItem({ dark, color, children }) {
+  const { style } = React.useContext(ThemeContext);
   return (
     <li
       style={{
         color: color,
-        listStyle: "none"
+        listStyle: "none",
+        backgroundColor: style === "light" ? "#ffffff" : "#033333"
       }}
     >
-      {dark ? "🌚" : "🌝"} {children}
+      {style === "light" ? (dark ? "🌚" : "🌝") : dark ? "🌝" : "🌚"} {children}
     </li>
   );
 }

@@ -3,35 +3,49 @@ import "./App.css";
 
 import Header from "./components/Header";
 import List from "./components/List";
-import ListItem from "./components/ListItem";
+import Input from "./components/Input";
+import ThemeContext from "./components/ThemeContext";
 
 function App() {
-  const [value, setValue] = React.useState("I'm MR. input");
+  const [style, setStyle] = React.useState("light");
+  const [items] = React.useState([
+    {
+      dark: true,
+      color: "red",
+      children: "Happy"
+    },
+    {
+      color: "blue",
+      children: "Santa"
+    },
+    {
+      color: "green",
+      children: "Hello world!!!"
+    },
+    {
+      dark: true,
+      color: "#111111",
+      children: "React"
+    },
+    {
+      color: "cyan",
+      children: "JavaScript"
+    }
+  ]);
+
+  const toggleStyle = () => {
+    setStyle(style => (style === "light" ? "dark" : "light"));
+  };
+
   return (
-    <div className="App">
-      <Header />
-
-      <input
-        value={value}
-        onChange={e => {
-          setValue(e.nativeEvent.target.value);
-        }}
-      />
-      <h4>{value}</h4>
-
-      {/* List */}
-      <List>
-        <ListItem dark={true} color="red">
-          Happy
-        </ListItem>
-        <ListItem color="green">Hello world!!!</ListItem>
-        <ListItem dark={true} color="blue">
-          Santa
-        </ListItem>
-        <ListItem color="#111111">React</ListItem>
-        <ListItem color="cyan">JavaScript</ListItem>
-      </List>
-    </div>
+    <ThemeContext.Provider value={{ style, toggleStyle }}>
+      <div className="App">
+        <Header />
+        <Input />
+        {/* List */}
+        <List items={items} />
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
