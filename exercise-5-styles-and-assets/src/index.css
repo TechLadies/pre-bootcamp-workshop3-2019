@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
+
+html {
+  height: 100%;
+  background: #e1ebf2;
+}
+
+body {
+  margin: 0;
+  font-family: "Lobster", cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
