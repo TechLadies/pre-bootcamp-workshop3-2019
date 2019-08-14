@@ -1,0 +1,134 @@
+# Writing React component
+
+---
+
+# JSX
+
+---
+
+```jsx
+const element = <h1>Hello, world!</h1>;
+```
+
+JSX is a syntax extension to JavaScript, neither a string nor HTML. JSX produces React “elements”.
+
+---
+
+### Embedding Expressions in JSX
+
+```jsx
+const name = "Josh Perez";
+const element = <h1>Hello, {name}</h1>;
+
+ReactDOM.render(element, document.getElementById("root"));
+```
+
+---
+
+### Passing html attribute
+
+```jsx
+const element = (
+  <div className="my-div" tabIndex="0">
+    Hello
+  </div>
+);
+```
+
+---
+
+```jsx
+const element = <h1 className="greeting">Hello, world!</h1>;
+```
+
+```jsx
+// React.createElement
+const element = {
+  type: "h1",
+  props: {
+    className: "greeting",
+    children: "Hello, world!"
+  }
+};
+```
+
+---
+
+# React Component and Props
+
+---
+
+```jsx
+function List(props) {
+  return (
+    <ul>
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+    </ul>
+  );
+}
+```
+
+---
+
+### Function component
+
+---
+
+### ~~Class component~~
+
+---
+
+```jsx
+function List(props) {
+  return (
+    <ul>
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+    </ul>
+  );
+}
+```
+
+---
+
+### Passing props
+
+---
+
+```jsx
+<ListItem color="green">Hello world!!!</ListItem>
+```
+
+```jsx
+function ListItem(props) {
+  return <li style={{ color: props.color }}>{props.children}</li>;
+}
+```
+
+```jsx
+<li style={{ color: "green" }}>Hello world!!!</li>
+```
+
+---
+
+```jsx
+function List(props) {
+  return <ul>{props.children}</ul>;
+}
+function ListItem(props) {
+  return <li style={{ color: props.color }}>{props.children}</li>;
+}
+
+function App() {
+  return (
+    <List>
+      <ListItem color="green">Hello world!!!</ListItem>
+      <ListItem color="#111111">React</ListItem>
+      <ListItem color="cyan">JavaScript</ListItem>
+    </List>
+  );
+}
+```

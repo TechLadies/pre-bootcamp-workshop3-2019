@@ -1,0 +1,159 @@
+# State
+
+---
+
+## Introducing Hooks
+
+---
+
+`useState` declares a “state variable”. This is a way to “preserve” some values between the function calls
+
+---
+
+```jsx
+import React, { useState } from "react";
+
+function Example() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+}
+```
+
+---
+
+explain more
+
+---
+
+```jsx
+<Example /> -> state = { count: 0 }
+```
+
+Click
+
+```jsx
+<Example /> -> state = { count: 1 }
+```
+
+---
+
+```jsx
+import React from "react";
+
+export default function Input() {
+  const [value, setValue] = React.useState("I'm MR. input");
+  return (
+    <div>
+      <input
+        value={value}
+        onChange={e => {
+          setValue(e.nativeEvent.target.value);
+        }}
+      />
+      <h4>{value}</h4>
+    </div>
+  );
+}
+```
+
+---
+
+```jsx
+  const [items] = React.useState([
+    {
+      dark: true,
+      color: "red",
+      children: "Happy"
+    },
+    {
+      color: "blue",
+      children: "Santa"
+    },
+    ...
+  ]);
+  return (
+    ...
+      <List items={items} />
+    ...
+  );
+```
+
+---
+
+Context
+
+---
+
+Context is a way share data that can be considered “global” for a tree of React components
+
+---
+
+```jsx
+<Parent a={...}>
+  <...>
+    <...>
+      <Children b={"I want to use a"}>
+```
+
+---
+
+Context API
+
+```jsx
+const ThemeContext = React.createContext("light");
+```
+
+```jsx
+function App() {
+  ...
+  return (
+    <ThemeContext.Provider value="dark">
+      ...
+    </ThemeContext.Provider>
+  );
+}
+```
+
+---
+
+```jsx
+import ThemeContext from "./ThemeContext";
+
+function ListItem({ dark, color, children }) {
+  const { style } = React.useContext(ThemeContext);
+  return (
+    <li
+      style={{
+        ...,
+        background: style === "light" ? "#fff" : "#033"
+      }}
+    >
+      ...
+    </li>
+  );
+}
+```
+
+---
+
+## Togglable theme
+
+---
+
+```jsx
+function App() {
+  const [style, setStyle] = React.useState("light");
+  ...
+  const toggleStyle = () => setStyle(style === "light" ? "dark" : "light");
+  return (
+    <ThemeContext.Provider value={{ style, toggleStyle }}>
+      ...
+    </ThemeContext.Provider>
+  );
+}
+```
