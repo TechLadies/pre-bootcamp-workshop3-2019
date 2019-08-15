@@ -18,7 +18,13 @@ function useFetchPokemons() {
         `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=10`
       );
       const { results } = await response.json();
-      setPokemons(pokemons.concat(results));
+      const newPokemons = results.map((pokemon, index) => ({
+        ...pokemon,
+        sprite: `https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/${offset +
+          index +
+          1}.png`
+      }));
+      setPokemons(pokemons.concat(newPokemons));
       setLoading(false);
     };
 
