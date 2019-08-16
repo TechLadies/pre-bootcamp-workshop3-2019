@@ -8,6 +8,77 @@ Effect Hook
 
 ---
 
-fetch API
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
 ---
+
+```js
+const response = await fetch(URL);
+const { results } = await response.json();
+```
+
+---
+
+async/await?????
+🤯
+
+---
+
+### We want to fetch only once
+
+---
+
+meet `useEffect`
+
+---
+
+```jsx
+function Example() {
+  const [count, setCount] = useState(0);
+
+  React.useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+---
+
+```jsx
+React.useEffect(() => {
+  document.title = `You clicked ${count} times`;
+}, []);
+```
+
+---
+
+```jsx
+React.useEffect(callback, [conditional variable])
+```
+
+---
+
+## Clean up
+
+---
+
+```jsx
+React.useEffect(
+  () => {
+    const subscription = props.source.subscribe();
+    return () => {
+      subscription.unsubscribe();
+    };
+  },
+  [props.source],
+);
+```
