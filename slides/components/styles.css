@@ -1,0 +1,10 @@
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "menu menu main main right right"
+    "menu menu footer footer footer footer";
+  grid-gap: 40px;
+  padding: 60px;
+  color: transparent;
+  min-height: 360px;
+}

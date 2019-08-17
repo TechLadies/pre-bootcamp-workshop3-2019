@@ -1,43 +1,161 @@
+import { Appear, Image, Notes } from "mdx-deck";
+
+import WireframeWebsite from "../components/WireframeWebsite";
+import HtmlTitle from "../components/HTML";
+
 # Introduction to React
 
 ## @nutstick
 
 ---
 
-# What is React?
+# Web development
 
 ---
+
+<div
+  style={{
+    display: "flex",
+    flexDirection: "row"
+  }}
+>
+  <WireframeWebsite />
+  <div
+    style={{
+      paddingLeft: 60,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: 320,
+      fontSize: 36
+    }}
+  >
+    <HtmlTitle />
+  </div>
+</div>
+
+<Notes>
+
+- 1 page is big template string of html
+
+</Notes>
+
+---
+
+<div className="row">
+  <WireframeWebsite />
+  <div
+    style={{
+      paddingLeft: 60,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: 320
+    }}
+  >
+    <ul>
+      <Appear>
+        <li>
+          <h2>CSS</h2>
+        </li>
+        <li>
+          <h2>JavaScript</h2>
+        </li>
+      </Appear>
+    </ul>
+  </div>
+</div>
+
+<Notes>
+
+- javascript chaning data in html, css do style for whole page
+
+</Notes>
+
+---
+
+<div className="row">
+  <h1 className="code" style={{ color: "#e9426f", fontWeight: 400 }}>
+    HTML
+  </h1>
+  <h1 style={{ padding: "0.5em" }}>{"<"}</h1>
+  <h1 className="code" style={{ color: "#28d796", fontWeight: 400 }}>
+    JavaScript
+  </h1>
+</div>
+
+---
+
+## 📄 Super big JavaScript file
+
+---
+
+## Separate concern
+
+---
+
+## Reusable
+
+---
+
+Template
+
+```html
+<div class="person" on-click="javascript()">
+  <img class="avatar" src="::__avatar__::" />
+  <span class="name">
+    ::__name__::
+  </span>
+</div>
+```
+
+---
+
+## Component
+
+---
+
+Templates + Data
+
+---
+
+<Image src="mdx/logo.svg" style={{ width: 300, height: 300 }} />
 
 # React
 
-> JavaScript library, facebook
+---
+
+JavaScript to write templates
 
 ---
 
-old
+## JSX
 
-1 page is big template string of html
+```jsx
+const name = "Josh Perez";
+const element = <h1>Hello, {name}</h1>;
 
-javascript chaning data in html, css do style for whole page
+ReactDOM.render(element, document.getElementById("root"));
+```
 
-----
+---
 
-React creating base one design implement that
+> React creating base one design implement that component base, A component recieved "Data" and use to render "UI"
 
-component base
+---
 
-1 component handle UI and data
+## Update data -> Update UI
 
-data -> UI
+---
 
-----
+### Dynamic template is slow
 
-update data -> update UI
+---
 
-dom diff to optimize, visual dom (reconcite)
+## Optimization
 
-"props is something that is not change, state is something that internal to your component"
+---
 
-----
-
-Life cycle
+## VisualDOM
