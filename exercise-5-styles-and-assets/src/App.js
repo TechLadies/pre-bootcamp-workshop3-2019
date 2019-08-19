@@ -5,7 +5,9 @@ import "./App.css";
 import Header from "./components/Header";
 import List from "./components/List";
 import Input from "./components/Input";
-import ThemeContext from "./components/ThemeContext";
+import Pokemon from "./components/Pokemon";
+import PokemonContext from "./components/PokemonContext";
+import Pokedex from "./components/Pokedex";
 
 function useFetchPokemons() {
   const [offset, setOffset] = React.useState(0);
@@ -18,7 +20,8 @@ function useFetchPokemons() {
         `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=10`
       );
       const { results } = await response.json();
-      setPokemons(pokemons.concat(results));
+      const newPokemons = results.map(pokemon => pokemon);
+      setPokemons(pokemons.concat(newPokemons));
       setLoading(false);
     };
 
@@ -35,22 +38,20 @@ function useFetchPokemons() {
 }
 
 function App() {
-  const [style, setStyle] = React.useState("light");
+  const [value, setValue] = React.useState("I'm MR. input");
   const { pokemons, loading, loadMore } = useFetchPokemons();
-
-  const toggleStyle = () => {
-    setStyle(style => (style === "light" ? "dark" : "light"));
-  };
-
+  const [selectedPokemon, setSelectedPokemon] = React.useState();
   return (
-    <ThemeContext.Provider value={{ style, toggleStyle }}>
+    <PokemonContext.Provider value={{ selectedPokemon, setSelectedPokemon }}>
       <div className="App">
         <Header />
-        <Input />
-        {/* List */}
-        <List items={pokemons} loading={loading} loadMore={loadMore} />
+        <Input value={value} setValue={setValue} />
+        <Pokedex
+          main={<List items={pokemons} loading={loading} loadMore={loadMore} />}
+          right={selectedPokemon && <Pokemon name={selectedPokemon} />}
+        />
       </div>
-    </ThemeContext.Provider>
+    </PokemonContext.Provider>
   );
 }
 

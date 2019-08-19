@@ -1,0 +1,108 @@
+.root {
+  display: flex;
+  justify-content: center;
+}
+
+.leftPage {
+  width: 350px;
+  height: 520px;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fc2243;
+}
+
+.rightPage {
+  width: 350px;
+  height: 520px;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  background: #fc2243;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+  position: relative;
+}
+
+.left {
+  flex: 1;
+  height: 100%;
+  background: #c00d0d;
+  position: relative;
+}
+
+.left:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top: 52px solid #c00d0d;
+  border-right: 80px solid #fc2243;
+  width: 0;
+}
+
+.blueBeep {
+  cursor: pointer;
+  background: #71cdf4;
+  width: 24px;
+  height: 24px;
+  box-shadow: 4px 0 #71cdf4, -4px 0 #71cdf4, 0 -4px #71cdf4, 0 4px #71cdf4,
+    8px 0 #71cdf4, -8px 0 #71cdf4, 0 -8px #71cdf4, 0 8px #71cdf4,
+    0 0 0 4px #71cdf4, 12px 0 white, -12px 0 white, 0 12px white, 0 -12px white,
+    0 -4px 0 4px white, 0 4px 0 4px white, 4px 0 0 4px white, -4px 0 0 4px white;
+  margin: 12px auto;
+
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  z-index: 2;
+}
+
+.statusBar {
+  position: absolute;
+  right: 15%;
+  top: 15px;
+  width: 65px;
+  display: flex;
+  flex-direction: row;
+}
+
+.beepRed {
+  background: #fc2243;
+  width: 8px;
+  height: 8px;
+  box-shadow: 2px 0 #a70000, -2px 0 #a70000, 0 -2px #a70000, 0 2px #a70000,
+    4px 0 black, -4px 0 black, 0 -4px black, 0 4px black, 0 0 0 2px black;
+  margin: 4px auto;
+}
+.beepYellow {
+  background: #ffff00;
+  width: 8px;
+  height: 8px;
+  box-shadow: 2px 0 #a7a700, -2px 0 #a7a700, 0 -2px #a7a700, 0 2px #a7a700,
+    4px 0 black, -4px 0 black, 0 -4px black, 0 4px black, 0 0 0 2px black;
+  margin: 4px auto;
+}
+.beepGreen {
+  background: #00ff00;
+  width: 8px;
+  height: 8px;
+  box-shadow: 2px 0 green, -2px 0 green, 0 -2px green, 0 2px green, 4px 0 black,
+    -4px 0 black, 0 -4px black, 0 4px black, 0 0 0 2px black;
+  margin: 4px auto;
+}
+
+.right {
+  flex: 1;
+  height: 50%;
+  background: #c00d0d;
+}
+
+.screen {
+  height: 80%;
+  padding: 1rem;
+}

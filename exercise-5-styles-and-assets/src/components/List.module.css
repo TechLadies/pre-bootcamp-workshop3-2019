@@ -1,4 +1,6 @@
 .root {
-  max-width: 600px;
-  margin: 0 auto;
+  height: 100%;
+  padding: 0 !important;
+  background: white;
+  overflow: auto;
 }

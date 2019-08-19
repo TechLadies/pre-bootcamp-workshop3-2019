@@ -1,30 +1,30 @@
 import React from "react";
 import classNames from "classnames";
-import ThemeContext from "./ThemeContext";
+import PokemonContext from "./PokemonContext";
 import s from "./ListItem.module.css";
 
-function ListItem({ dark, color, name }) {
-  const { style } = React.useContext(ThemeContext);
+function ListItem({ name }) {
+  const { selectedPokemon, setSelectedPokemon } = React.useContext(
+    PokemonContext
+  );
+  const sprite = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`;
   return (
     <li
-      className={s.root}
+      className={classNames(s.root, "nes-container", "is-rounded")}
       style={{
-        backgroundColor: style === "light" ? "#ffffff" : "#033333"
+        backgroundColor: selectedPokemon === name ? "#033333" : "#ffffff"
       }}
+      onClick={() =>
+        selectedPokemon !== name
+          ? setSelectedPokemon(name)
+          : setSelectedPokemon(null)
+      }
     >
-      <span className={s.icon}>
-        {style === "light" ? (dark ? "🌚" : "🌝") : dark ? "🌝" : "🌚"}
-      </span>
+      <img className={s.img} src={sprite} alt={name} />
       <span
         className={classNames(
           s.content,
-          style === "light"
-            ? dark
-              ? s.invert
-              : undefined
-            : dark
-            ? undefined
-            : s.invert
+          selectedPokemon === name ? s.invert : undefined
         )}
       >
         {name}

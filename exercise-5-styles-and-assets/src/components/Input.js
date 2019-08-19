@@ -1,16 +1,20 @@
 import React from "react";
 
-export default function Input() {
-  const [value, setValue] = React.useState("I'm MR. input");
+export default function Input({ value, setValue }) {
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: 400,
+        margin: "24px auto 36px"
+      }}
+    >
       <input
+        className="nes-input"
         value={value}
         onChange={e => {
           setValue(e.nativeEvent.target.value);
         }}
       />
-      <h4>{value}</h4>
     </div>
   );
 }

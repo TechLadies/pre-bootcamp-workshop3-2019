@@ -1,17 +1,20 @@
 import React from "react";
+import classNames from "classnames";
 import ListItem from "./ListItem";
 import s from "./List.module.css";
 
 function List({ items, loading, loadMore }) {
   return (
-    <ul className={s.root}>
+    <ul className={classNames(s.root, "nes-container", "is-centered")}>
       {items.map(item => (
         <ListItem {...item} />
       ))}
       {loading ? (
         "Loading..."
       ) : (
-        <button onClick={() => loadMore()}>Load more...</button>
+        <button className="nes-btn is-primary" onClick={() => loadMore()}>
+          Load more...
+        </button>
       )}
     </ul>
   );
