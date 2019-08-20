@@ -1,0 +1,221 @@
+$bgColor: #dc082c;
+
+.overlay {
+  position: absolute;
+  top: 57px;
+  left: -17px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  opacity: 0.5;
+  z-index: 100;
+}
+@mixin step1($width, $color) {
+  box-shadow: $width 0 $color, -$width 0 $color, 0 (-$width) $color,
+    0 $width $color;
+  margin: $width auto;
+}
+@mixin step3($width, $color, $bgcolor) {
+  box-shadow: $width 0 $bgcolor, -$width 0 $bgcolor, 0 (-$width) $bgcolor,
+    0 $width $bgcolor, 2 * $width 0 $bgcolor, -2 * $width 0 $bgcolor,
+    0 (-2 * $width) $bgcolor, 0 2 * $width $bgcolor, 0 0 0 $width $bgcolor,
+    3 * $width 0 $color, -3 * $width 0 $color, 0 3 * $width $color,
+    0 (-3 * $width) $color, 0 (-$width) 0 $width $color,
+    0 $width 0 $width $color, $width 0 0 $width $color,
+    -$width 0 0 $width $color;
+  margin: 3 * $width auto;
+}
+@mixin other($width, $color, $bgcolor) {
+  box-shadow: 4 * $width 0 $bgcolor, -4 * $width 0 $bgcolor,
+    0 (-4 * $width) $bgcolor, 0 4 * $width $bgcolor,
+    $width 0 0 2 * $width $bgcolor, -$width 0 0 2 * $width $bgcolor,
+    0 (-$width) 0 2 * $width $bgcolor, 0 $width 0 2 * $width $bgcolor,
+    5 * $width 0 $color, -5 * $width 0 $color, 0 (-5 * $width) $color,
+    0 5 * $width $color, 0 0 0 3 * $width $color,
+    0 2 * $width 0 2 * $width $color, 0 (-2 * $width) 0 2 * $width $color,
+    2 * $width 0 0 2 * $width $color, (-2 * $width) 0 0 2 * $width $color;
+  margin: 5 * $width auto;
+}
+@mixin hinger {
+  position: relative;
+  width: 100%;
+  background: $bgColor;
+  @include step1(4px, #89051b);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20%;
+    height: 100%;
+    border-right: 5px solid #deb3ba;
+    box-shadow: #dc435b 6px 0;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0%;
+    height: 100%;
+    border-right: 5px solid #89051b;
+  }
+}
+.root {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.leftPage {
+  width: 335px;
+  height: 505px;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: $bgColor;
+  @include other(2px, $bgColor, $bgColor);
+}
+
+.hingerContainer {
+  position: absolute;
+  top: 9%;
+  width: 36px;
+  height: 88%;
+
+  > .miniHinger {
+    @include hinger;
+    height: 5%;
+  }
+
+  > .mainHinger {
+    @include hinger;
+    height: 90%;
+  }
+}
+
+.rightPage {
+  width: 335px;
+  height: 515px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 22px;
+  padding-top: 10%;
+
+  > .cutPage {
+    flex: 1;
+    background: $bgColor;
+    @include other(2px, $bgColor, $bgColor);
+  }
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+  position: relative;
+}
+
+.left {
+  width: 55%;
+  height: 100%;
+  position: relative;
+  > .bottomShadow {
+    color: #89051b;
+    position: absolute;
+    bottom: -5%;
+    left: -5%;
+    width: 65%;
+    height: 0px;
+    border-bottom: 8px solid #89051b;
+  }
+  > .shadow {
+    right: -8%;
+    color: #89051b;
+    position: absolute;
+    bottom: 27%;
+    width: 100px;
+    height: 0px;
+    transform: rotate(-38deg);
+    border-bottom: 8px solid #89051b;
+  }
+}
+
+.blueBeep {
+  cursor: pointer;
+  background: #27aafd;
+  width: 28px;
+  height: 28px;
+  @include other(5px, #dedede, #27aafd);
+  position: absolute;
+  top: 5%;
+  left: 20%;
+  z-index: 2;
+}
+
+.innerBlueBeep {
+  cursor: pointer;
+  background: #a1dafe;
+  width: 8px;
+  height: 8px;
+  @include other(2px, #a1dafe, #a1dafe);
+  position: absolute;
+  top: -40%;
+  left: 0%;
+  z-index: 2;
+}
+
+.statusBar {
+  position: absolute;
+  left: 106px;
+  top: 8px;
+  width: 80px;
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin beep($color) {
+  position: relative;
+  background: $color;
+  @include step3(2px, $color, $color);
+  width: 7px;
+  height: 7px;
+  &:before {
+    position: absolute;
+    top: -36%;
+    left: 8%;
+    background: #ffffff;
+    content: "";
+    width: 1px;
+    height: 1px;
+    @include step3(1px, #ffffff, #ffffff);
+  }
+}
+
+.beepRed {
+  @include beep(#ff4663);
+}
+.beepYellow {
+  @include beep(#ffe747);
+}
+.beepGreen {
+  @include beep(#4eae5e);
+}
+
+.right {
+  position: relative;
+  flex: 1;
+  height: 37px;
+  > .shadow {
+    color: #89051b;
+    position: absolute;
+    bottom: -20%;
+    width: 100%;
+    height: 0px;
+    border-bottom: 8px solid #89051b;
+  }
+}
+
+.screen {
+  height: 80%;
+  padding: 1rem 1.5rem 1rem 1rem;
+}
