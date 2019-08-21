@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
-import s from "./Pokemon.module.css";
+import s from "./Pokemon.module.scss";
 
 export default function Pokemon({ name }) {
   const [pokemon, setPokemon] = useState();
@@ -19,36 +19,37 @@ export default function Pokemon({ name }) {
   return (
     <div className={s.root}>
       <div className={s.spriteContainer}>
-        <div className={classNames(s.sprite, "nes-container", "is-rounded")}>
-          <img src={image} alt={name} />
+        <div className={s.sprite}>
+          <img className={s.img} src={image} alt={name} />
         </div>
       </div>
-      <table className="nes-table is-bordered is-centered">
+      <table
+        className="nes-table is-bordered is-centered"
+        style={{ width: "calc(100% - 50px)", marginTop: 20 }}
+      >
         <thead>
           <tr>
-            <th colSpan="2">{name}</th>
+            <th colSpan="9">{name}</th>
           </tr>
         </thead>
         <thead>
           <tr>
-            <th>TYPE</th>
-            <th>
-              {pokemon ? pokemon.types.map(({ type: { name } }) => name) : null}
+            <th colSpan="2">TYPE</th>
+            <th colSpan="7">
+              {pokemon
+                ? pokemon.types.map(({ type: { name } }, index) => (
+                    <button
+                      type="button"
+                      className="nes-btn is-primary"
+                      style={index !== 0 ? { marginLeft: 16 } : {}}
+                    >
+                      {name}
+                    </button>
+                  ))
+                : null}
             </th>
           </tr>
         </thead>
-        <tbody>
-          {pokemon
-            ? pokemon.stats.map(({ base_stat, stat: { name } }) => {
-                return (
-                  <tr>
-                    <td>{name}</td>
-                    <td>{base_stat}</td>
-                  </tr>
-                );
-              })
-            : null}
-        </tbody>
       </table>
     </div>
   );

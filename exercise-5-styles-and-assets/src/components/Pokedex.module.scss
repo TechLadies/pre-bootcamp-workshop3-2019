@@ -1,3 +1,5 @@
+@import "./mixins.scss";
+
 $bgColor: #dc082c;
 
 .overlay {
@@ -10,32 +12,7 @@ $bgColor: #dc082c;
   opacity: 0.5;
   z-index: 100;
 }
-@mixin step1($width, $color) {
-  box-shadow: $width 0 $color, -$width 0 $color, 0 (-$width) $color,
-    0 $width $color;
-  margin: $width auto;
-}
-@mixin step3($width, $color, $bgcolor) {
-  box-shadow: $width 0 $bgcolor, -$width 0 $bgcolor, 0 (-$width) $bgcolor,
-    0 $width $bgcolor, 2 * $width 0 $bgcolor, -2 * $width 0 $bgcolor,
-    0 (-2 * $width) $bgcolor, 0 2 * $width $bgcolor, 0 0 0 $width $bgcolor,
-    3 * $width 0 $color, -3 * $width 0 $color, 0 3 * $width $color,
-    0 (-3 * $width) $color, 0 (-$width) 0 $width $color,
-    0 $width 0 $width $color, $width 0 0 $width $color,
-    -$width 0 0 $width $color;
-  margin: 3 * $width auto;
-}
-@mixin other($width, $color, $bgcolor) {
-  box-shadow: 4 * $width 0 $bgcolor, -4 * $width 0 $bgcolor,
-    0 (-4 * $width) $bgcolor, 0 4 * $width $bgcolor,
-    $width 0 0 2 * $width $bgcolor, -$width 0 0 2 * $width $bgcolor,
-    0 (-$width) 0 2 * $width $bgcolor, 0 $width 0 2 * $width $bgcolor,
-    5 * $width 0 $color, -5 * $width 0 $color, 0 (-5 * $width) $color,
-    0 5 * $width $color, 0 0 0 3 * $width $color,
-    0 2 * $width 0 2 * $width $color, 0 (-2 * $width) 0 2 * $width $color,
-    2 * $width 0 0 2 * $width $color, (-2 * $width) 0 0 2 * $width $color;
-  margin: 5 * $width auto;
-}
+
 @mixin hinger {
   position: relative;
   width: 100%;
@@ -77,6 +54,7 @@ $bgColor: #dc082c;
 }
 
 .hingerContainer {
+  z-index: 5;
   position: absolute;
   top: 9%;
   width: 36px;
@@ -96,14 +74,25 @@ $bgColor: #dc082c;
 .rightPage {
   width: 335px;
   height: 515px;
+  position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-left: 22px;
   padding-top: 10%;
+
+  > .trapezoid {
+    position: absolute;
+    top: 9%;
+    border-bottom: 64px solid $bgColor;
+    border-right: 50px solid transparent;
+    height: 0;
+    width: 64%;
+  }
 
   > .cutPage {
     flex: 1;
     background: $bgColor;
+    width: 100%;
     @include other(2px, $bgColor, $bgColor);
   }
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import classNames from "classnames";
 import s from "./Pokedex.module.scss";
-import gif from "../pokedex.gif";
 
 export default function Pokedex({ main, right }) {
   return (
@@ -36,12 +35,10 @@ export default function Pokedex({ main, right }) {
           <div className={s.miniHinger} />
         </div>
         <div className={classNames(s.rightPage)}>
+          <div className={s.trapezoid} />
           <div className={s.cutPage}>{right}</div>
         </div>
       </div>
-      {/* <div className={s.overlay}>
-        <img src={gif} style={{ width: "785px" }} />
-      </div> */}
     </>
   );
 }
