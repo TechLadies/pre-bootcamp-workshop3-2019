@@ -1,8 +1,15 @@
+@mixin row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 @mixin step1($width, $color) {
   box-shadow: $width 0 $color, -$width 0 $color, 0 (-$width) $color,
     0 $width $color;
   margin: $width auto;
 }
+
 @mixin step3($width, $color, $bgcolor) {
   box-shadow: $width 0 $bgcolor, -$width 0 $bgcolor, 0 (-$width) $bgcolor,
     0 $width $bgcolor, 2 * $width 0 $bgcolor, -2 * $width 0 $bgcolor,
@@ -13,6 +20,7 @@
     -$width 0 0 $width $color;
   margin: 3 * $width auto;
 }
+
 @mixin other($width, $color, $bgcolor) {
   box-shadow: 4 * $width 0 $bgcolor, -4 * $width 0 $bgcolor,
     0 (-4 * $width) $bgcolor, 0 4 * $width $bgcolor,

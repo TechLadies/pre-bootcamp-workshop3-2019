@@ -4,26 +4,23 @@ import s from "./Pokedex.module.scss";
 
 export default function Pokedex({ main, right }) {
   return (
-    <>
-      <div className={classNames(s.root)}>
+    <div className={s.container}>
+      <div className={s.pokedex}>
         <div className={classNames(s.leftPage)}>
-          <div className={s.top}>
+          <div className={s.header}>
             <div className={s.left}>
-              <div className={s.blueBeep}>
-                <div className={s.innerBlueBeep} />
+              <div className={s.mainLight}>
+                <div className={s.reflection} />
               </div>
               <div className={s.statusBar}>
-                <div className={s.beepRed} />
-                <div className={s.beepYellow} />
-                <div className={s.beepGreen} />
+                <div className={s.redled} />
+                <div className={s.yellowled} />
+                <div className={s.greenled} />
               </div>
-              <div className={s.bottomShadow} />
-              <div className={s.shadow} />
+              <div className={s.border1} />
+              <div className={s.border2} />
             </div>
-            <div className={s.right} id="topbar-square-2">
-              <div className="animated bouneInUp" id="buttonLightRed" />
-              <div className="animated bouneInUp" id="buttonGreen" />
-              <div className="animated bouneInUp" id="buttontopYellow" />
+            <div className={s.right}>
               <div className={s.shadow} />
             </div>
           </div>
@@ -39,6 +36,6 @@ export default function Pokedex({ main, right }) {
           <div className={s.cutPage}>{right}</div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

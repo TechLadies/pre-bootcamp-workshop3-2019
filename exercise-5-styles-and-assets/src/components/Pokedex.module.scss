@@ -1,17 +1,13 @@
 @import "./mixins.scss";
 
 $bgColor: #dc082c;
-
-.overlay {
-  position: absolute;
-  top: 57px;
-  left: -17px;
-  right: 0px;
-  display: flex;
-  justify-content: center;
-  opacity: 0.5;
-  z-index: 100;
-}
+$shadow: #89051b;
+$blue-light: #27aafd;
+$blue-light-reflection: #a1dafe;
+$page-width: 335px;
+$page-height: 505px;
+$hinger-width: 36px;
+$shadow-width: 8px;
 
 @mixin hinger {
   position: relative;
@@ -38,27 +34,91 @@ $bgColor: #dc082c;
     border-right: 5px solid #89051b;
   }
 }
-.root {
+
+.container {
+  @include row-center;
+}
+
+.pokedex {
   position: relative;
   display: flex;
-  justify-content: center;
+}
+
+.page {
+  width: $page-width;
+  height: $page-height;
 }
 
 .leftPage {
-  width: 335px;
-  height: 505px;
+  @extend .page;
   margin: 0 !important;
   padding: 0 !important;
   background: $bgColor;
   @include other(2px, $bgColor, $bgColor);
+
+  > .header {
+    display: flex;
+    flex-direction: row;
+    height: 20%;
+    position: relative;
+
+    > .left {
+      width: 55%;
+      height: 100%;
+      position: relative;
+
+      > .mainLight {
+        @include other(5px, #dedede, $blue-light);
+        cursor: pointer;
+        background: $blue-light;
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        top: 5%;
+        left: 20%;
+        z-index: 2;
+
+        > .reflection {
+          @include other(2px, $blue-light-reflection, $blue-light-reflection);
+          background: $blue-light-reflection;
+          width: 8px;
+          height: 8px;
+          position: absolute;
+          top: -40%;
+          left: 0%;
+        }
+      }
+
+      > .border1 {
+        color: $shadow;
+        position: absolute;
+        bottom: -5%;
+        left: -5%;
+        width: 65%;
+        height: 0px;
+        border-bottom: $shadow-width solid $shadow;
+      }
+      > .border2 {
+        color: $shadow;
+        position: absolute;
+        bottom: 27%;
+        right: -8%;
+        width: 100px;
+        height: 0px;
+        border-bottom: $shadow-width solid $shadow;
+        transform: rotate(-38deg);
+      }
+    }
+  }
 }
 
 .hingerContainer {
   z-index: 5;
   position: absolute;
   top: 9%;
-  width: 36px;
+  width: $hinger-width;
   height: 88%;
+  left: $page-width;
 
   > .miniHinger {
     @include hinger;
@@ -72,13 +132,12 @@ $bgColor: #dc082c;
 }
 
 .rightPage {
-  width: 335px;
-  height: 515px;
+  @extend .page;
   position: relative;
   display: flex;
   flex-direction: column;
   margin-left: 22px;
-  padding-top: 10%;
+  padding-top: calc(64px + 3%);
 
   > .trapezoid {
     position: absolute;
@@ -96,63 +155,6 @@ $bgColor: #dc082c;
     @include other(2px, $bgColor, $bgColor);
   }
 }
-
-.top {
-  display: flex;
-  flex-direction: row;
-  height: 20%;
-  position: relative;
-}
-
-.left {
-  width: 55%;
-  height: 100%;
-  position: relative;
-  > .bottomShadow {
-    color: #89051b;
-    position: absolute;
-    bottom: -5%;
-    left: -5%;
-    width: 65%;
-    height: 0px;
-    border-bottom: 8px solid #89051b;
-  }
-  > .shadow {
-    right: -8%;
-    color: #89051b;
-    position: absolute;
-    bottom: 27%;
-    width: 100px;
-    height: 0px;
-    transform: rotate(-38deg);
-    border-bottom: 8px solid #89051b;
-  }
-}
-
-.blueBeep {
-  cursor: pointer;
-  background: #27aafd;
-  width: 28px;
-  height: 28px;
-  @include other(5px, #dedede, #27aafd);
-  position: absolute;
-  top: 5%;
-  left: 20%;
-  z-index: 2;
-}
-
-.innerBlueBeep {
-  cursor: pointer;
-  background: #a1dafe;
-  width: 8px;
-  height: 8px;
-  @include other(2px, #a1dafe, #a1dafe);
-  position: absolute;
-  top: -40%;
-  left: 0%;
-  z-index: 2;
-}
-
 .statusBar {
   position: absolute;
   left: 106px;
@@ -160,34 +162,35 @@ $bgColor: #dc082c;
   width: 80px;
   display: flex;
   flex-direction: row;
-}
 
-@mixin beep($color) {
-  position: relative;
-  background: $color;
-  @include step3(2px, $color, $color);
-  width: 7px;
-  height: 7px;
-  &:before {
-    position: absolute;
-    top: -36%;
-    left: 8%;
-    background: #ffffff;
-    content: "";
-    width: 1px;
-    height: 1px;
-    @include step3(1px, #ffffff, #ffffff);
+  @mixin led($color) {
+    @include step3(2px, $color, $color);
+    position: relative;
+    background: $color;
+    width: 7px;
+    height: 7px;
+
+    &:before {
+      position: absolute;
+      top: -36%;
+      left: 8%;
+      background: #ffffff;
+      content: "";
+      width: 1px;
+      height: 1px;
+      @include step3(1px, #ffffff, #ffffff);
+    }
   }
-}
 
-.beepRed {
-  @include beep(#ff4663);
-}
-.beepYellow {
-  @include beep(#ffe747);
-}
-.beepGreen {
-  @include beep(#4eae5e);
+  > .redled {
+    @include led(#ff4663);
+  }
+  > .yellowled {
+    @include led(#ffe747);
+  }
+  > .greenled {
+    @include led(#4eae5e);
+  }
 }
 
 .right {
