@@ -1,5 +1,5 @@
 import { Appear, Image, Notes } from "mdx-deck";
-
+import { LiveCode } from "mdx-deck-live-code";
 import WireframeWebsite from "../components/WireframeWebsite";
 import HtmlTitle from "../components/HTML";
 
@@ -43,6 +43,10 @@ import HtmlTitle from "../components/HTML";
 
 ---
 
+<Image src="assets/www.png" />
+
+---
+
 <div className="row">
   <WireframeWebsite />
   <div
@@ -76,15 +80,7 @@ import HtmlTitle from "../components/HTML";
 
 ---
 
-<div className="row">
-  <h1 className="code" style={{ color: "#e9426f", fontWeight: 400 }}>
-    HTML
-  </h1>
-  <h1 style={{ padding: "0.5em" }}>{"<"}</h1>
-  <h1 className="code" style={{ color: "#28d796", fontWeight: 400 }}>
-    JavaScript
-  </h1>
-</div>
+<Image src="assets/drawer.001.png" />
 
 ---
 
@@ -92,15 +88,54 @@ import HtmlTitle from "../components/HTML";
 
 ---
 
-## Separate concern
+<LiveCode
+  size="fullscreen"
+  code={
+    '<div class="main">\n' +
+    " <h4>Users</h4>\n" +
+    '  <div class="person" on-click="javascript()">\n' +
+    "    <img\n" +
+    '      class="avatar"\n' +
+    '      src="https://s3.amazonaws.com/uifaces/faces/twitter/justme_timothyg/128.jpg"\n' +
+    "    />\n" +
+    '    <span class="name">\n' +
+    "      Hosea Dickinson\n" +
+    "    </span>\n" +
+    "  </div>\n" +
+    '  <div class="person" on-click="javascript()">\n' +
+    "    <img\n" +
+    '      class="avatar"\n' +
+    '      src="https://s3.amazonaws.com/uifaces/faces/twitter/reideiredale/128.jpg"\n' +
+    "    />\n" +
+    '    <span class="name">\n' +
+    "      Anabel Welch\n" +
+    "    </span>\n" +
+    "  </div>\n" +
+    '  <div class="person" on-click="javascript()">\n' +
+    "    <img\n" +
+    '      class="avatar"\n' +
+    '      src="https://s3.amazonaws.com/uifaces/faces/twitter/kaelifa/128.jpg"\n' +
+    "    />\n" +
+    '    <span class="name">\n' +
+    "      Miss Ernesto Medhurst\n" +
+    "    </span>\n" +
+    "  </div>\n" +
+    '  <div class="person" on-click="javascript()">\n' +
+    "    <img\n" +
+    '      class="avatar"\n' +
+    '      src="https://s3.amazonaws.com/uifaces/faces/twitter/brenton_clarke/128.jpg"\n' +
+    "    />\n" +
+    '    <span class="name">\n' +
+    "      Elody Herman\n" +
+    "    </span>\n" +
+    "  </div>\n" +
+    "</div>\n"
+  }
+/>
 
 ---
 
-## Reusable
-
----
-
-Template
+<Image src="assets/person-card.png" style={{ width: 500, height: "120px" }} />
 
 ```html
 <div class="person" on-click="javascript()">
@@ -113,15 +148,29 @@ Template
 
 ---
 
+## Separate concern
+
+---
+
+## Reusable
+
+---
+
 ## Component
 
 ---
 
 Templates + Data
 
+<Notes>
+
+- Before react libaray is more template base
+
+</Notes>
+
 ---
 
-<Image src="mdx/logo.svg" style={{ width: 300, height: 300 }} />
+<Image src="assets/logo.svg" style={{ width: 300, height: 300 }} />
 
 # React
 
@@ -142,11 +191,19 @@ ReactDOM.render(element, document.getElementById("root"));
 
 ---
 
-> React creating base one design implement that component base, A component recieved "Data" and use to render "UI"
+> React creating base one design implement that component base, A component received "Data" and use to render "UI"
 
 ---
 
 ## Update data -> Update UI
+
+---
+
+Components Tree
+
+---
+
+State or Props is trigger update
 
 ---
 
@@ -158,4 +215,4 @@ ReactDOM.render(element, document.getElementById("root"));
 
 ---
 
-## VisualDOM
+## VirtualDOM
