@@ -38,14 +38,13 @@ function useFetchPokemons() {
 }
 
 function App() {
-  const [value, setValue] = React.useState("I'm MR. input");
   const { pokemons, loading, loadMore } = useFetchPokemons();
   const [selectedPokemon, setSelectedPokemon] = React.useState();
   return (
     <PokemonContext.Provider value={{ selectedPokemon, setSelectedPokemon }}>
       <div className="App">
         <Header />
-        <Input value={value} setValue={setValue} />
+        <Input value={selectedPokemon} setValue={setSelectedPokemon} />
         <Pokedex
           main={<List items={pokemons} loading={loading} loadMore={loadMore} />}
           right={selectedPokemon && <Pokemon name={selectedPokemon} />}
