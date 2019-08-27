@@ -4,7 +4,7 @@ import Logo from "../logo.png";
 
 function Header() {
   return (
-    <div className={s.root}>
+    <div className={s.header}>
       <img className={s.logo} src={Logo} alt="logo" />
     </div>
   );

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
-@import "./nes.min.css";
+@import "./styles/nes.min.css";
 
 html {
   height: 100%;

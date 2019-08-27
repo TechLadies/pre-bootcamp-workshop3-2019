@@ -1,12 +1,12 @@
 import React from "react";
-import classNames from "classnames";
+import cx from "classnames";
 import s from "./Pokedex.module.scss";
 
 export default function Pokedex({ main, right }) {
   return (
     <div className={s.container}>
       <div className={s.pokedex}>
-        <div className={classNames(s.leftPage)}>
+        <div className={cx(s.leftPage)}>
           <div className={s.header}>
             <div className={s.left}>
               <div className={s.mainLight}>
@@ -24,14 +24,14 @@ export default function Pokedex({ main, right }) {
               <div className={s.shadow} />
             </div>
           </div>
-          <div className={classNames(s.screen)}>{main}</div>
+          <div className={cx(s.screen)}>{main}</div>
         </div>
         <div className={s.hingerContainer}>
           <div className={s.miniHinger} />
           <div className={s.mainHinger} />
           <div className={s.miniHinger} />
         </div>
-        <div className={classNames(s.rightPage)}>
+        <div className={cx(s.rightPage)}>
           <div className={s.trapezoid} />
           <div className={s.cutPage}>{right}</div>
         </div>

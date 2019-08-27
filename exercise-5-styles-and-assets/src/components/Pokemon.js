@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import classNames from "classnames";
+import cx from "classnames";
 import s from "./Pokemon.module.scss";
 
 export default function Pokemon({ name }) {
@@ -23,20 +23,17 @@ export default function Pokemon({ name }) {
           <img className={s.img} src={image} alt={name} />
         </div>
       </div>
-      <table
-        className="nes-table is-bordered is-centered"
-        style={{ width: "calc(100% - 50px)", marginTop: 20 }}
-      >
+      <table className={cx("nes-table", "is-bordered", "is-centered", s.table)}>
         <thead>
           <tr>
-            <th colSpan="9">{name}</th>
+            <th colSpan="9">{pokemon ? pokemon.name : ""}</th>
           </tr>
         </thead>
         <thead>
           <tr>
             <th colSpan="2">TYPE</th>
             <th colSpan="7">
-              {pokemon
+              {pokemon && pokemon.types
                 ? pokemon.types.map(({ type: { name } }, index) => (
                     <button
                       type="button"

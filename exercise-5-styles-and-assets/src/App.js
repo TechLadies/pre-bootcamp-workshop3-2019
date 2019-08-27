@@ -47,7 +47,7 @@ function App() {
         <Input value={selectedPokemon} setValue={setSelectedPokemon} />
         <Pokedex
           main={<List items={pokemons} loading={loading} loadMore={loadMore} />}
-          right={selectedPokemon && <Pokemon name={selectedPokemon} />}
+          right={<Pokemon name={selectedPokemon} />}
         />
       </div>
     </PokemonContext.Provider>

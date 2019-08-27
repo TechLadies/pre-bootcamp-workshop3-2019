@@ -1,4 +1,4 @@
-.root {
+.listItem {
   list-style: none;
   margin: 1rem !important;
   padding: 0.6rem 0.5rem !important;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.root:hover {
+.listItem:hover {
   box-shadow: 0 0px 10px 0 rgba(72, 84, 93, 0.4);
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import classNames from "classnames";
+import cx from "classnames";
 import PokemonContext from "./PokemonContext";
 import s from "./ListItem.module.css";
 
@@ -10,7 +10,7 @@ function ListItem({ name }) {
   const sprite = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`;
   return (
     <li
-      className={classNames(s.root, "nes-container", "is-rounded")}
+      className={cx(s.listItem, "nes-container", "is-rounded")}
       style={{
         backgroundColor: selectedPokemon === name ? "#033333" : "#ffffff"
       }}
@@ -22,7 +22,7 @@ function ListItem({ name }) {
     >
       <img className={s.img} src={sprite} alt={name} />
       <span
-        className={classNames(
+        className={cx(
           s.content,
           selectedPokemon === name ? s.invert : undefined
         )}

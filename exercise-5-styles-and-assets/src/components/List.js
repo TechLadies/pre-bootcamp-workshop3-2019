@@ -1,11 +1,11 @@
 import React from "react";
-import classNames from "classnames";
+import cx from "classnames";
 import ListItem from "./ListItem";
 import s from "./List.module.css";
 
 function List({ items, loading, loadMore }) {
   return (
-    <ul className={classNames(s.root, "nes-container", "is-centered")}>
+    <ul className={cx(s.list, "nes-container", "is-centered")}>
       {items.map(item => (
         <ListItem {...item} />
       ))}

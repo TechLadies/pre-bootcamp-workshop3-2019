@@ -11,6 +11,7 @@ export default function Input({ value, setValue }) {
       <input
         className="nes-input"
         value={value}
+        placeholder="Type pokemon name!!!"
         onChange={e => {
           setValue(e.nativeEvent.target.value);
         }}
