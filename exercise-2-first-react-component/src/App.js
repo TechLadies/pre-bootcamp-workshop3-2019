@@ -3,23 +3,42 @@ import "./App.css";
 
 import Header from "./components/Header";
 import List from "./components/List";
-import ListItem from "./components/ListItem";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <List>
-        <ListItem dark={true} color="red">
-          Happy
-        </ListItem>
-        <ListItem color="green">Hello world!!!</ListItem>
-        <ListItem dark={true} color="blue">
-          Santa
-        </ListItem>
-        <ListItem color="#111111">React</ListItem>
-        <ListItem color="cyan">JavaScript</ListItem>
-      </List>
+      <List
+        items={[
+          {
+            dark: true,
+            color: "red",
+            children: "Happy"
+          },
+          {
+            color: "green",
+            children: "Coding"
+          },
+          {
+            dark: true,
+            color: "blue",
+            children: "Hellow world!!"
+          },
+          {
+            dark: false,
+            color: "#111111",
+            children: "TechLadies"
+          },
+          {
+            color: "rgba(0.0, 255, 255, 1.0)",
+            children: "React"
+          },
+          {
+            color: "#ffab00",
+            children: "JavaScript"
+          }
+        ]}
+      />
     </div>
   );
 }
