@@ -1,18 +1,25 @@
 import React from "react";
-import ThemeContext from "./ThemeContext";
+import PokemonContext from "./PokemonContext";
 
-function ListItem({ dark, color, sprite, name }) {
-  const { style } = React.useContext(ThemeContext);
+function ListItem({ name }) {
+  const { selectedPokemon, setSelectedPokemon } = React.useContext(
+    PokemonContext
+  );
+  const sprite = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`;
   return (
     <li
       style={{
-        color: color,
         listStyle: "none",
-        backgroundColor: style === "light" ? "#ffffff" : "#033333"
+        backgroundColor: selectedPokemon !== name ? "#ffffff" : "#033333"
       }}
+      onClick={() =>
+        selectedPokemon !== name
+          ? setSelectedPokemon(name)
+          : setSelectedPokemon(null)
+      }
     >
-      {style === "light" ? (dark ? "🌚" : "🌝") : dark ? "🌝" : "🌚"} {name}{" "}
       <img src={sprite} alt={name} />
+      <span>{name}</span>
     </li>
   );
 }

@@ -5,7 +5,8 @@ import "./App.css";
 import Header from "./components/Header";
 import List from "./components/List";
 import Input from "./components/Input";
-import ThemeContext from "./components/ThemeContext";
+import Pokemon from "./components/Pokemon";
+import PokemonContext from "./components/PokemonContext";
 
 function useFetchPokemons() {
   const [offset, setOffset] = React.useState(0);
@@ -18,12 +19,7 @@ function useFetchPokemons() {
         `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=10`
       );
       const { results } = await response.json();
-      const newPokemons = results.map((pokemon, index) => ({
-        ...pokemon,
-        sprite: `https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/${offset +
-          index +
-          1}.png`
-      }));
+      const newPokemons = results.map(pokemon => pokemon);
       setPokemons(pokemons.concat(newPokemons));
       setLoading(false);
     };
@@ -41,22 +37,44 @@ function useFetchPokemons() {
 }
 
 function App() {
-  const [style, setStyle] = React.useState("light");
   const { pokemons, loading, loadMore } = useFetchPokemons();
-
-  const toggleStyle = () => {
-    setStyle(style => (style === "light" ? "dark" : "light"));
-  };
-
+  const [selectedPokemon, setSelectedPokemon] = React.useState();
   return (
-    <ThemeContext.Provider value={{ style, toggleStyle }}>
+    <PokemonContext.Provider value={{ selectedPokemon, setSelectedPokemon }}>
       <div className="App">
         <Header />
-        <Input />
-        {/* List */}
-        <List items={pokemons} loading={loading} loadMore={loadMore} />
+        <Input value={selectedPokemon} setValue={setSelectedPokemon} />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center"
+          }}
+        >
+          <div
+            style={{
+              width: 335,
+              height: 505,
+              padding: 32,
+              border: "1px solid grey",
+              overflow: "auto"
+            }}
+          >
+            <List items={pokemons} loading={loading} loadMore={loadMore} />
+          </div>
+          <div
+            style={{
+              width: 335,
+              height: 505,
+              padding: 32,
+              border: "1px solid grey"
+            }}
+          >
+            <Pokemon name={selectedPokemon} />
+          </div>
+        </div>
       </div>
-    </ThemeContext.Provider>
+    </PokemonContext.Provider>
   );
 }
 

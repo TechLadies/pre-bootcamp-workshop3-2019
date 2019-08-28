@@ -155,6 +155,7 @@ $shadow-width: 8px;
     @include other(2px, $bgColor, $bgColor);
   }
 }
+
 .statusBar {
   position: absolute;
   left: 106px;
