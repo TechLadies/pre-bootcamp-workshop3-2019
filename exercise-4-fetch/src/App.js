@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 
 import Header from "./components/Header";
@@ -9,11 +9,11 @@ import Pokemon from "./components/Pokemon";
 import PokemonContext from "./components/PokemonContext";
 
 function useFetchPokemons() {
-  const [offset, setOffset] = React.useState(0);
-  const [pokemons, setPokemons] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
+  const [offset, setOffset] = useState(0);
+  const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchPokemon = async () => {
       const response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=10`
@@ -27,7 +27,7 @@ function useFetchPokemons() {
     fetchPokemon();
   }, [offset]);
 
-  const loadMore = React.useCallback(
+  const loadMore = useCallback(
     (limit = 10) => {
       setOffset(offset + limit);
     },
@@ -38,7 +38,7 @@ function useFetchPokemons() {
 
 function App() {
   const { pokemons, loading, loadMore } = useFetchPokemons();
-  const [selectedPokemon, setSelectedPokemon] = React.useState();
+  const [selectedPokemon, setSelectedPokemon] = useState();
   return (
     <PokemonContext.Provider value={{ selectedPokemon, setSelectedPokemon }}>
       <div className="App">

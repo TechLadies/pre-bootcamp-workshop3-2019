@@ -1,16 +1,7 @@
 import React from "react";
-import ThemeContext from "./ThemeContext";
 
 function Header() {
-  const { style, toggleStyle } = React.useContext(ThemeContext);
-
-  return (
-    <div>
-      <h4>My List</h4>
-      <button onClick={toggleStyle}>Change Theme</button>
-      <span>{style}</span>
-    </div>
-  );
+  return <h1>Pokemon</h1>;
 }
 
 export default Header;

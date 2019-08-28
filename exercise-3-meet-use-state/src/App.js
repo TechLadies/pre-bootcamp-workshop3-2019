@@ -1,51 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 import Header from "./components/Header";
 import List from "./components/List";
 import Input from "./components/Input";
-import ThemeContext from "./components/ThemeContext";
+import PokemonContext from "./components/PokemonContext";
 
 function App() {
-  const [style, setStyle] = React.useState("light");
-  const [items] = React.useState([
+  // https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10
+  const [pokemons] = useState([
     {
-      dark: true,
-      color: "red",
-      children: "Happy"
+      name: "bulbasaur",
+      url: "https://pokeapi.co/api/v2/pokemon/1/"
     },
     {
-      color: "blue",
-      children: "Santa"
+      name: "ivysaur",
+      url: "https://pokeapi.co/api/v2/pokemon/2/"
     },
     {
-      color: "green",
-      children: "Hello world!!!"
+      name: "venusaur",
+      url: "https://pokeapi.co/api/v2/pokemon/3/"
     },
     {
-      dark: true,
-      color: "#111111",
-      children: "React"
+      name: "charmander",
+      url: "https://pokeapi.co/api/v2/pokemon/4/"
     },
     {
-      color: "cyan",
-      children: "JavaScript"
+      name: "charmeleon",
+      url: "https://pokeapi.co/api/v2/pokemon/5/"
+    },
+    {
+      name: "charizard",
+      url: "https://pokeapi.co/api/v2/pokemon/6/"
+    },
+    {
+      name: "squirtle",
+      url: "https://pokeapi.co/api/v2/pokemon/7/"
+    },
+    {
+      name: "wartortle",
+      url: "https://pokeapi.co/api/v2/pokemon/8/"
+    },
+    {
+      name: "blastoise",
+      url: "https://pokeapi.co/api/v2/pokemon/9/"
+    },
+    {
+      name: "caterpie",
+      url: "https://pokeapi.co/api/v2/pokemon/10/"
     }
   ]);
-
-  const toggleStyle = () => {
-    setStyle(style => (style === "light" ? "dark" : "light"));
-  };
-
+  const [selectedPokemon, setSelectedPokemon] = useState();
   return (
-    <ThemeContext.Provider value={{ style, toggleStyle }}>
+    <PokemonContext.Provider value={{ selectedPokemon, setSelectedPokemon }}>
       <div className="App">
         <Header />
-        <Input />
-        {/* List */}
-        <List items={items} />
+        <Input value={selectedPokemon} setValue={setSelectedPokemon} />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center"
+          }}
+        >
+          <div
+            style={{
+              width: 335,
+              height: 505,
+              padding: 32,
+              border: "1px solid grey",
+              overflow: "auto"
+            }}
+          >
+            <List items={pokemons} />
+          </div>
+        </div>
       </div>
-    </ThemeContext.Provider>
+    </PokemonContext.Provider>
   );
 }
 
