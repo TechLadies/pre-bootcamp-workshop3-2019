@@ -452,3 +452,7 @@ function ListItem({ dark, color, children }) {
 
 export default ListItem;
 ```
+
+# Result
+
+![result](ss-2-1.png "Result")
