@@ -390,69 +390,85 @@ export default function List({ items }) {
 }
 ```
 
-Adding more logic into `ListItem`, in `App.js`
+Because we want to create a Pokedex app, so let's go to https://pokeapi.co/ and get the first 10 pokemons.
 
-```diff
- function App() {
-   const items = [
-     {
-+      dark: true,
-+      color: "red",
-       children: "Happy"
-     },
-     {
-+      color: "green",
-       children: "Coding"
-     },
-     {
-+      dark: true,
-+      color: "blue",
-       children: "Hellow world!!"
-     },
-     {
-+      dark: false,
-+      color: "#111111",
-       children: "TechLadies"
-     },
-     {
-+      color: "rgba(0.0, 255, 255, 1.0)",
-       children: "React"
-     },
-     {
-+      color: "#ffab00",
-       children: "JavaScript"
-     }
-   ];
-   return (
-     <div className="App">
-       <Header />
-       <List items={items} />
-     </div>
-   );
- }
+```
+pokemon?limit=10&offset=0
 ```
 
-And inside `ListItem.js`, we will add custom text color logic and some custom display base on props `dark` that we passing in.
+![pokeapi](ss-2-1.png "pokeapi")
+
+Copy the results and put in our `items` variable
 
 ```jsx
-import React from "react";
+function App() {
+  const items = [
+    {
+      name: "bulbasaur",
+      url: "https://pokeapi.co/api/v2/pokemon/1/"
+    },
+    {
+      name: "ivysaur",
+      url: "https://pokeapi.co/api/v2/pokemon/2/"
+    },
+    {
+      name: "venusaur",
+      url: "https://pokeapi.co/api/v2/pokemon/3/"
+    },
+    {
+      name: "charmander",
+      url: "https://pokeapi.co/api/v2/pokemon/4/"
+    },
+    {
+      name: "charmeleon",
+      url: "https://pokeapi.co/api/v2/pokemon/5/"
+    },
+    {
+      name: "charizard",
+      url: "https://pokeapi.co/api/v2/pokemon/6/"
+    },
+    {
+      name: "squirtle",
+      url: "https://pokeapi.co/api/v2/pokemon/7/"
+    },
+    {
+      name: "wartortle",
+      url: "https://pokeapi.co/api/v2/pokemon/8/"
+    },
+    {
+      name: "blastoise",
+      url: "https://pokeapi.co/api/v2/pokemon/9/"
+    },
+    {
+      name: "caterpie",
+      url: "https://pokeapi.co/api/v2/pokemon/10/"
+    }
+  ];
+  return (
+    <div className="App">
+      <Header />
+      <List items={items} />
+    </div>
+  );
+}
+```
 
-function ListItem({ dark, color, children }) {
+And inside `ListItem.js`, we will add make our pokemon item display.
+
+```jsx
+function ListItem({ name }) {
+  const sprite = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`;
   return (
     <li
       style={{
-        color: color,
         listStyle: "none"
       }}
     >
-      {dark ? "🌚" : "🌝"} {children}
+      <img src={sprite} alt={name} />
+      <span>{name}</span>
     </li>
   );
 }
 
 export default ListItem;
 ```
-
-# Result
-
-![result](ss-2-1.png "Result")

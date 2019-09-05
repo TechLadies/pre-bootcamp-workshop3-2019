@@ -7,31 +7,44 @@ import List from "./components/List";
 function App() {
   const items = [
     {
-      dark: true,
-      color: "red",
-      children: "Happy"
+      name: "bulbasaur",
+      url: "https://pokeapi.co/api/v2/pokemon/1/"
     },
     {
-      color: "green",
-      children: "Coding"
+      name: "ivysaur",
+      url: "https://pokeapi.co/api/v2/pokemon/2/"
     },
     {
-      dark: true,
-      color: "blue",
-      children: "Hellow world!!"
+      name: "venusaur",
+      url: "https://pokeapi.co/api/v2/pokemon/3/"
     },
     {
-      dark: false,
-      color: "#111111",
-      children: "TechLadies"
+      name: "charmander",
+      url: "https://pokeapi.co/api/v2/pokemon/4/"
     },
     {
-      color: "rgba(0.0, 255, 255, 1.0)",
-      children: "React"
+      name: "charmeleon",
+      url: "https://pokeapi.co/api/v2/pokemon/5/"
     },
     {
-      color: "#ffab00",
-      children: "JavaScript"
+      name: "charizard",
+      url: "https://pokeapi.co/api/v2/pokemon/6/"
+    },
+    {
+      name: "squirtle",
+      url: "https://pokeapi.co/api/v2/pokemon/7/"
+    },
+    {
+      name: "wartortle",
+      url: "https://pokeapi.co/api/v2/pokemon/8/"
+    },
+    {
+      name: "blastoise",
+      url: "https://pokeapi.co/api/v2/pokemon/9/"
+    },
+    {
+      name: "caterpie",
+      url: "https://pokeapi.co/api/v2/pokemon/10/"
     }
   ];
   return (

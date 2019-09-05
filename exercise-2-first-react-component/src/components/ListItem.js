@@ -1,14 +1,15 @@
 import React from "react";
 
-function ListItem({ dark, color, children }) {
+function ListItem({ name }) {
+  const sprite = `https://img.pokemondb.net/sprites/sun-moon/icon/${name}.png`;
   return (
     <li
       style={{
-        color: color,
         listStyle: "none"
       }}
     >
-      {dark ? "🌚" : "🌝"} {children}
+      <img src={sprite} alt={name} />
+      <span>{name}</span>
     </li>
   );
 }
