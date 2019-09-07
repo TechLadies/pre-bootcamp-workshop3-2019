@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 
@@ -14,17 +13,17 @@ function useFetchPokemons() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPokemon = async () => {
+    const fetchPokemons = async () => {
       const response = await fetch(
         `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=10`
       );
       const { results } = await response.json();
       const newPokemons = results.map(pokemon => pokemon);
-      setPokemons(pokemons.concat(newPokemons));
+      setPokemons(oldPokemons => oldPokemons.concat(newPokemons));
       setLoading(false);
     };
 
-    fetchPokemon();
+    fetchPokemons();
   }, [offset]);
 
   const loadMore = useCallback(
