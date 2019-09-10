@@ -12,7 +12,7 @@ This funny tag syntax is neither a string nor HTML.
 
 It is called JSX, and it is a syntax extension to JavaScript. JSX may remind you of a template language, but it comes with the full power of JavaScript.
 
-JSX produces React “elements”. And React will constructor the element and rendering to the DOM inn your browser.
+JSX produces React “elements”. And React will constructor the element and rendering to the DOM in your browser.
 
 JSX is the tricky part when I start developing React. Normally if you writing JavaScript code to create HTML element. You can do it using [Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
 
@@ -155,7 +155,7 @@ const element = (
 );
 ```
 
-And last but no least nested element or expression under tag with becomes `children`. So you can do
+And last but not least nested element or expression under tag with becomes `children`. So you can do
 
 ```jsx
 const element = <h1>React</h1>;

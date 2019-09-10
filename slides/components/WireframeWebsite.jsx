@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
+import { jsx, css } from "@emotion/core";
 import TopStatusbar from "./TopStatusbar";
 import "./styles.css";
 
@@ -22,8 +22,7 @@ export default function WireframeWebsite() {
       css={css`
         border-radius: 4px;
         overflow: hidden;
-        width: 80%;
-        background: #222;
+        background: #282c34;
         min-width: 400px;
       `}
     >

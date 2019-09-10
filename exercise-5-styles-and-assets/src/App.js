@@ -28,12 +28,9 @@ function useFetchPokemons() {
     fetchPokemon();
   }, [offset]);
 
-  const loadMore = React.useCallback(
-    (limit = 10) => {
-      setOffset(offset + limit);
-    },
-    [offset]
-  );
+  const loadMore = (limit = 10) => {
+    setOffset(offset + limit);
+  };
   return { pokemons, loading, loadMore };
 }
 

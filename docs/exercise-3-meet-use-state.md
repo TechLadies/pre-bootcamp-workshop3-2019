@@ -26,7 +26,7 @@ You will see nothing change after you click. Why? You can also try debug by addi
 
 _What happened?_
 
-## How React rerender
+## How React rendering
 
 Let's start with understand React rendering process. Each React application begins with a root component. So you can think of your application as a "tree" of component, and each point of time, component only recieve props and state to produce 1 version of UI. The first render, React will start execute your root component, and recursive through whole tree to get whole rendering element tree.
 

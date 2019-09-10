@@ -1,23 +1,22 @@
 /** @jsx jsx */
-import { jsx } from "@emotion/core";
+import { jsx, css } from "@emotion/core";
 import Highlighter from "react-syntax-highlighter";
-import style from "react-syntax-highlighter/dist/styles/hljs/github";
+import { style } from "../prism-theme";
 import TopStatusbar from "./TopStatusbar";
 
 export default function Terminal({ children }) {
   return (
     <div
       css={css`
-        border-radius: 4px;
+        border-radius: 0.5rem;
         overflow: hidden;
       `}
     >
       <TopStatusbar showActions />
       <div
         css={css`
-          background: #222;
-          padding: 20px;
-          font-size: 1em;
+          background: #282c34;
+          padding: 1.75rem;
           text-align: left;
         `}
       >
@@ -25,13 +24,11 @@ export default function Terminal({ children }) {
           language="sh"
           style={{
             ...style,
-            hljs: {
-              color: "#fff",
-              background: "#222",
-              display: "block",
-              overflowX: "auto",
-              padding: "0.5em"
-            }
+            'code[class*="language-"]': {
+              ...style['code[class*="language-"]'],
+              fontSize: "1.5rem",
+              lineHeight: "2.5rem",
+            },
           }}
         >
           {children}

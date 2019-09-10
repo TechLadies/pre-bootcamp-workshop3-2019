@@ -1,25 +1,22 @@
 {
-  "name": "slides",
+  "private": true,
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
   "scripts": {
-    "build": "mdx-deck build deck.js --webpack webpack.config.js",
-    "postbuild": "npm run build:pdf",
-    "build:pdf": "mdx-deck pdf deck.js",
-    "start": "mdx-deck deck.js --webpack webpack.config.js"
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx",
+    "test": "echo \"there are no tests\""
   },
   "devDependencies": {
-    "css-loader": "^1.0.0",
-    "file-loader": "^2.0.0",
-    "mdx-deck": "^1.7.4",
-    "style-loader": "^0.23.0"
-  },
-  "dependencies": {
-    "@emotion/core": "^10.0.15",
-    "gatsby-mdx-theme": "^0.0.4",
+    "@emotion/core": "^10.0.17",
+    "code-surfer": "^2.0.0-alpha.10",
+    "mdx-deck": "2.5.1",
     "mdx-deck-live-code": "^1.0.1",
-    "typeface-space-mono": "^0.0.54",
-    "typeface-spectral": "^0.0.54"
+    "raw-loader": "^3.1.0",
+    "react-syntax-highlighter": "^11.0.2",
+    "styled-components": "^4.3.2"
+  },
+  "name": "my-deck",
+  "dependencies": {
+    "react-live": "^2.2.0"
   }
 }
