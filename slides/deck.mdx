@@ -1134,7 +1134,11 @@ const { state } = useContext(MyContext);
 
 ---
 
-#### Later
+<Image
+  src="static/images/ss-4-1.svg"
+  width="842px"
+  height="394px"
+/>
 
 ---
 
@@ -1146,11 +1150,61 @@ useEffect(callback, [dependency]);
 
 ---
 
-[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+```jsx
+function Example() {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    document.title = "Count " + count;
+  });
+
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)} />
+    </div>
+  );
+}
+```
 
 ---
 
-## `https://pokeapi.co/api/v2/pokemon/ditto`
+```jsx
+useEffect(() => {
+  setInterval(() => {
+    setCount(count => count + 1);
+  }, 1000);
+}, []);
+```
+
+---
+
+<MainLayout>
+
+# [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+
+</MainLayout>
+
+---
+
+<a href="https://pokeapi.co/api/v2/pokemon/ditto">
+  <Image
+    src="static/images/ss-4-2.png"
+    alt="ditto"
+    width="256px"
+    height="256px"
+  />
+</a>
+
+---
+
+<Image
+  style={{
+    maxWidth: "80%",
+    maxHeight: "80%",
+    margin: "0 auto",
+  }}
+  src="static/images/screenshot.png"
+  alt="static/images/screenshot.png"
+/>
 
 ---
 
@@ -1168,13 +1222,43 @@ const fetchPokemon = async name => {
 
 <MainLayout>
 
+### `React.useEffect`
+
+</MainLayout>
+
+---
+
+<MainLayout>
+
 # Pokemon lists
 
 </MainLayout>
 
 ---
 
+<MainLayout>
+
 # Combining hooks
+
+</MainLayout>
+
+---
+
+```jsx
+function useFetchPokemons() {
+  ...
+
+  return [pokemon, loading, loadMore]
+}
+```
+
+---
+
+<MainLayout>
+
+# :zap:
+
+</MainLayout>
 
 ---
 
@@ -1250,6 +1334,36 @@ s = {
 
 ---
 
+# [NES.css](https://nostalgic-css.github.io/NES.css/)
+
+---
+
+<Image
+  src="https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg"
+  width="512px"
+  height="384px"
+/>
+
+---
+
+<Terminal>
+  {`yarn add -D node-sass\n` +
+    `# or\n` +
+    `npm install --dev node-sass`}
+</Terminal>
+
+---
+
+<MainLayout>
+
+# 🔮
+
+# Just a magic
+
+</MainLayout>
+
+---
+
 # Image Assets
 
 ---
@@ -1262,20 +1376,42 @@ import image from "./image.svg";
 
 ---
 
-# Deploy
+![ss-5-1.png](static/images/ss-5-1.png)
+
+---
+
+<MainLayout>
+
+# Deploy 🚀
+
+</MainLayout>
 
 ---
 
 ## build your app
 
----
-
 <Terminal>{`yarn build`}</Terminal>
 
 ---
 
-## Netlify again
+<MainLayout>
+
+# [Netlify 🙏🙏](https://www.netlify.com/)
+
+</MainLayout>
 
 ---
 
-https://www.netlify.com/
+<Image
+  style={{
+    maxWidth: "80%",
+    maxHeight: "80%",
+    margin: "0 auto",
+  }}
+  src="static/images/screenshot.png"
+  alt="static/images/screenshot.png"
+/>
+
+---
+
+# Thanks!!!
