@@ -31,6 +31,19 @@ export { themes } from "./theme";
 
 <MainLayout>
 
+#### Nuttapat Kirawittaya (Nut)
+
+- 🇹🇭
+- ⚛️ App, Shopee
+- Gastby workshop
+- React knowledgable
+
+</MainLayout>
+
+---
+
+<MainLayout>
+
 # Web development
 
 </MainLayout>
@@ -125,7 +138,7 @@ export { themes } from "./theme";
 
 ---
 
-![](static/images/drawer.001.png)
+![static/images/ss-0-1.svg](static/images/ss-0-1.svg)
 
 📄 Super big JavaScript file
 
@@ -1172,8 +1185,25 @@ useEffect(() => {
   setInterval(() => {
     setCount(count => count + 1);
   }, 1000);
+}, []); // <-- dependency
+```
+
+### Condition to called
+
+---
+
+```jsx
+useEffect(() => {
+  const handle = setInterval(() => {
+    setCount(count => count + 1);
+  }, 1000);
+  return () => {
+    clearInterval(handle);
+  };
 }, []);
 ```
+
+### Called when unmounted
 
 ---
 
@@ -1181,18 +1211,11 @@ useEffect(() => {
 
 # [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
+```jsx
+fetch(URL).then(response => response.json());
+```
+
 </MainLayout>
-
----
-
-<a href="https://pokeapi.co/api/v2/pokemon/ditto">
-  <Image
-    src="static/images/ss-4-2.png"
-    alt="ditto"
-    width="256px"
-    height="256px"
-  />
-</a>
 
 ---
 
@@ -1208,10 +1231,29 @@ useEffect(() => {
 
 ---
 
+<MainLayout>
+
+# PokeAPI
+
+<a href="https://pokeapi.co/api/v2/pokemon/ditto" style={{ justifyContent: 'center', display: 'flex' }}>
+
+  <Image
+    src="static/images/ss-4-2.png"
+    alt="ditto"
+    width="256px"
+    height="256px"
+    style={{ margin: 0 }}
+  />
+</a>
+
+</MainLayout>
+
+---
+
 ```js
 const fetchPokemon = async name => {
   const response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon/${name}`
+    "https://pokeapi.co/api/v2/pokemon/" + name
   );
   const pokemon = await response.json();
   return pokemon;
@@ -1222,7 +1264,19 @@ const fetchPokemon = async name => {
 
 <MainLayout>
 
-### `React.useEffect`
+```js
+React.useEffect(Pokemon);
+```
+
+</MainLayout>
+
+---
+
+<MainLayout>
+
+![https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/16.png](https://github.com/pokeapi/sprites/raw/master/sprites/pokemon/16.png)
+
+https://github.com/PokeAPI/sprites/
 
 </MainLayout>
 
@@ -1270,7 +1324,7 @@ function useFetchPokemons() {
 
 ---
 
-# 🧰 React Devtools
+# [🧰 React Devtools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 
 ---
 
@@ -1283,6 +1337,54 @@ function useFetchPokemons() {
 ## React.memo + useCallback
 
 </MainLayout>
+
+---
+
+<MainLayout>
+
+<h3 class="primary">React.memo(Component);</h3>
+
+prevent re-render if each props is not change
+
+</MainLayout>
+
+---
+
+<MainLayout>
+
+<h3 class="primary">useCallback(callback, [dependency]);</h3>
+
+return same reference if dependency is not changed
+
+</MainLayout>
+
+---
+
+<MainLayout>
+
+# Asset & Style
+
+</MainLayout>
+
+---
+
+<MainLayout>
+
+# Image Assets
+
+</MainLayout>
+
+---
+
+```jsx
+import image from "./image.svg";
+
+<img src={image} />;
+```
+
+---
+
+[![ss-5-1.png](static/images/ss-5-1.png)](https://sass-lang.com/)
 
 ---
 
@@ -1334,15 +1436,17 @@ s = {
 
 ---
 
-# [NES.css](https://nostalgic-css.github.io/NES.css/)
+[![nes.css](https://ph-files.imgix.net/17c995d7-53d0-4545-bfad-cd688d1ba809?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=80&h=80&fit=crop&dpr=2)](https://nostalgic-css.github.io/NES.css/)
 
 ---
 
-<Image
-  src="https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg"
-  width="512px"
-  height="384px"
-/>
+<a href="https://sass-lang.com/">
+  <Image
+    src="https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg"
+    width="512px"
+    height="384px"
+  />
+</a>
 
 ---
 
@@ -1361,22 +1465,6 @@ s = {
 # Just a magic
 
 </MainLayout>
-
----
-
-# Image Assets
-
----
-
-```jsx
-import image from "./image.svg";
-
-<img src={image} />;
-```
-
----
-
-![ss-5-1.png](static/images/ss-5-1.png)
 
 ---
 
